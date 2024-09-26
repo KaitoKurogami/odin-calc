@@ -8,6 +8,11 @@ const DIV_ZERO_STRING="can't divide by 0"
 /* obtener los operandos y el signo a partir del string*/
 function parseString(){
     const components = stringCalc.split(" ");
+    for (let i = 0; i < components.length; i++){
+        if (components[i].endsWith(".")){
+            components[i] += "0";
+        }
+    }
     if(components.length === 3){
         opp1 = components[0]*1;
         opp2 = components[2]*1;
@@ -70,7 +75,6 @@ function operate(opp, num1, num2){
     }
     if (stringCalc.endsWith(".0")){
         stringCalc = stringCalc.slice(0,-2);
-        console.log(stringCalc)
     }
 }
 
@@ -78,7 +82,27 @@ function setButtons(){
     const numButtons = document.querySelectorAll(".numRow .opp");
     for (let btn of Array.from(numButtons)){
         btn.addEventListener("click",()=>{
+            let boolDelete = false
+            if (btn.id==="dot"){
+                let spcIndex = stringCalc.indexOf(" ");
+                if( spcIndex === -1){
+                    if(stringCalc.indexOf(".") !== -1){
+                        boolDelete = true;
+                    }
+                }else{
+                    if(stringCalc.indexOf(".",spcIndex) !== -1){
+                        boolDelete = true;
+                    }
+                }
+                if (stringCalc.endsWith(" ") || stringCalc === ""){
+                    stringCalc += "0"
+                }
+            }
             stringCalc = stringCalc + btn.textContent;
+            if (boolDelete){
+                stringCalc = stringCalc.slice(0,-1);
+                boolDelete = false;
+            }
             updateDisplay()
         })
     }
@@ -118,6 +142,7 @@ function setButtons(){
         stringCalc = "";
         updateDisplay();
     })
+
 }
 
 setButtons();

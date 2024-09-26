@@ -7,6 +7,7 @@ button.opp,
 button.equal{
     min-width: 60px;
     aspect-ratio: 1/1;
+    font-size: large;
 }
 
 body {
@@ -33,10 +34,18 @@ body {
     flex: 3.75;
 }
 
+.lastRow {
+    justify-content: end;
+}
+
 .operatorPad{
     display: flex;
     flex-direction: column;
     flex: 1;
+}
+
+.operatorPad button{
+    background-color: gainsboro;
 }
 
 .calcBase button{
