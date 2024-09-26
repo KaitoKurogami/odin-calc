@@ -7,14 +7,34 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <input class="calcScreen" value="1+1" readonly>
+    <input class="calcScreen" placeholder="1+1" readonly>
     <div class="calcBody">
-        <div class="numPad"></div>
+        <div class="numPad">
+            <div class="numRow">
+                <button class="opp" id="num7">7</button>
+                <button class="opp" id="num8">8</button>
+                <button class="opp" id="num9">9</button>
+            </div>
+            <div class="numRow">
+                <button class="opp" id="num4">4</button>
+                <button class="opp" id="num5">5</button>
+                <button class="opp" id="num6">6</button>
+            </div>
+            <div class="numRow">
+                <button class="opp" id="num1">1</button>
+                <button class="opp" id="num2">2</button>
+                <button class="opp" id="num3">3</button>
+            </div>
+            <div class="numRow">
+                <button class="opp" id="num0">0</button>
+            </div>
+        </div>
         <div class="operatorPad">
             <button class="opp" id="sum">+</button>
             <button class="opp" id="sub">-</button>
             <button class="opp" id="mul">*</button>
             <button class="opp" id="div">/</button>
+            <button class="equal" id="equal">=</button>
         </div>
     </div>
     <div class="calcBase">
