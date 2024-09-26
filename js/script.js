@@ -112,12 +112,10 @@ function setButtons(){
     const oppButtons = document.querySelectorAll(".operatorPad .opp");
     for (let btn of Array.from(oppButtons)){
         btn.addEventListener("click",()=>{
+            resetValues();
             parseString();
-            console.log(sign, opp1, opp2)
             if(operationAllowed()){
                 operate(sign,opp1,opp2);
-            }else{
-                resetValues()
             }
             if(stringCalc === "" || stringCalc === DIV_ZERO_STRING){
                 stringCalc = "0"
@@ -133,7 +131,6 @@ function setButtons(){
     const equBtn = document.querySelector(".equal")
     equBtn.addEventListener("click",()=>{
         parseString();
-        console.log(sign,opp1,opp2)
         if (operationAllowed()){
             operate(sign,opp1,opp2)
         }else{
