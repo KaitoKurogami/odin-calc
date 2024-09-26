@@ -3,6 +3,7 @@ let opp2 = null;
 let sign = null;
 
 let stringCalc = ""
+const DIV_ZERO_STRING="can't divide by 0"
 
 /* obtener los operandos y el signo a partir del string*/
 function parseString(){
@@ -41,6 +42,9 @@ function multiply(opp1,opp2){
 }
 
 function divide(opp1,opp2){
+    if (opp2 === 0){
+        return DIV_ZERO_STRING
+    }
     return (rounded(opp1/opp2)).toFixed(1);
 }
 
@@ -64,6 +68,10 @@ function operate(opp, num1, num2){
             stringCalc = divide(num1, num2);
             break;
     }
+    if (stringCalc.endsWith(".0")){
+        stringCalc = stringCalc.slice(0,-2);
+        console.log(stringCalc)
+    }
 }
 
 function setButtons(){
@@ -79,6 +87,15 @@ function setButtons(){
     const oppButtons = document.querySelectorAll(".operatorPad .opp");
     for (let btn of Array.from(oppButtons)){
         btn.addEventListener("click",()=>{
+            parseString();
+            if(operationAllowed()){
+                operate(sign,opp1,opp2);
+            }else{
+                resetValues()
+            }
+            if(stringCalc === "" || stringCalc === DIV_ZERO_STRING){
+                stringCalc = "0"
+            }
             stringCalc = stringCalc + " " + btn.textContent + " ";
             updateDisplay()
         })
@@ -87,7 +104,6 @@ function setButtons(){
     const equBtn = document.querySelector(".equal")
     equBtn.addEventListener("click",()=>{
         parseString();
-        console.log(operationAllowed());
         if (operationAllowed()){
             operate(sign,opp1,opp2)
         }else{
