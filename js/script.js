@@ -148,7 +148,12 @@ function setButtons(){
 
     const backBtn = document.querySelector("#back")
     backBtn.addEventListener("click", () => {
-
+        if(stringCalc.endsWith(" ")){
+            stringCalc = stringCalc.slice(0,-3);
+        }else{
+            stringCalc = stringCalc.slice(0,-1);
+        }
+        updateDisplay();
     })
 }
 
