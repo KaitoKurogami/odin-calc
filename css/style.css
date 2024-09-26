@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 button.opp,
 button.equal{
     min-width: 60px;
@@ -7,7 +12,7 @@ button.equal{
 body {
     display: flex;
     flex-direction: column;
-    max-width: 450px;
+    max-width: 550px;
 }
 
 .calcScreen{
@@ -25,7 +30,7 @@ body {
 .numPad {
     display: flex;
     flex-direction: column;
-    flex: 3;
+    flex: 3.75;
 }
 
 .operatorPad{

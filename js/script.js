@@ -21,32 +21,49 @@ function resetValues(){
 }
 
 function rounded(num){
-    return Math.round(num * 10) / 10;
+    return (Math.round(num * 10) / 10);
 }
 
 function operationAllowed(){
     return !(opp1 === null || opp2 === null || sign === null);
 }
 
-function add(){
-    return String(opp1+opp2);
+function add(opp1,opp2){
+    return (opp1+opp2).toFixed(1);
 }
 
-function subtract(){
-    return String(opp1-opp2);
+function subtract(opp1,opp2){
+    return (opp1-opp2).toFixed(1);
 }
 
-function multiply(){
-    return String(rounded(opp1*opp2));
+function multiply(opp1,opp2){
+    return (rounded(opp1*opp2)).toFixed(1);
 }
 
-function divide(){
-    return String(rounded(opp1/opp2));
+function divide(opp1,opp2){
+    return (rounded(opp1/opp2)).toFixed(1);
 }
 
 function updateDisplay(){
     const display = document.querySelector(".calcScreen");
     display.value = stringCalc;
+}
+
+function operate(opp, num1, num2){
+    switch(opp){
+        case "+":
+            stringCalc = add(num1, num2);
+            break;
+        case "-":
+            stringCalc = subtract(num1, num2);
+            break;
+        case "*":
+            stringCalc = multiply(num1, num2);
+            break;
+        case "/":
+            stringCalc = divide(num1, num2);
+            break;
+    }
 }
 
 function setButtons(){
@@ -72,24 +89,18 @@ function setButtons(){
         parseString();
         console.log(operationAllowed());
         if (operationAllowed()){
-            switch(sign){
-                case "+":
-                    stringCalc = add();
-                    break;
-                case "-":
-                    stringCalc = subtract();
-                    break;
-                case "*":
-                    stringCalc = multiply();
-                    break;
-                case "/":
-                    stringCalc = divide();
-                    break;
-            }
+            operate(sign,opp1,opp2)
         }else{
             resetValues();
         }
         updateDisplay()
+    })
+
+    const clearBtn = document.querySelector("#clear")
+    clearBtn.addEventListener("click", () => {
+        resetValues();
+        stringCalc = "";
+        updateDisplay();
     })
 }
 
