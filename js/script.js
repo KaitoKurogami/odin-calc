@@ -13,7 +13,7 @@ function parseString(){
             components[i] += "0";
         }
     }
-    if(components.length === 3){
+    if(components.length === 3 && (components[2] !== "")){
         opp1 = components[0]*1;
         opp2 = components[2]*1;
         sign = components[1];
@@ -120,6 +120,9 @@ function setButtons(){
             if(stringCalc === "" || stringCalc === DIV_ZERO_STRING){
                 stringCalc = "0"
             }
+            if (stringCalc.endsWith(" ")) {
+                stringCalc = stringCalc.slice(0,-3)
+            }
             stringCalc = stringCalc + " " + btn.textContent + " ";
             updateDisplay()
         })
@@ -143,6 +146,10 @@ function setButtons(){
         updateDisplay();
     })
 
+    const backBtn = document.querySelector("#back")
+    backBtn.addEventListener("click", () => {
+
+    })
 }
 
 setButtons();
