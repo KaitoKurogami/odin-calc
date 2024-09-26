@@ -1,0 +1,30 @@
+button.opp{
+    width: 30px;
+    aspect-ratio: 1/1;
+    flex: 1;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.calcScreen{
+    text-align: center;
+    max-width: max-content;
+}
+
+.calcBody,
+.calcBase,
+.numRow {
+    display: flex;
+}
+
+.numPad {
+    display: flex;
+}
+
+.operatorPad{
+    display: flex;
+    flex-direction: column;
+}
