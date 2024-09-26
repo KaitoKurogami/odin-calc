@@ -81,6 +81,7 @@ function operate(opp, num1, num2){
 function setButtons(){
     const numButtons = document.querySelectorAll(".numRow .opp");
     for (let btn of Array.from(numButtons)){
+        btn.id="id"+btn.textContent;
         btn.addEventListener("click",()=>{
             let boolDelete = false
             if (btn.id==="dot"){
@@ -112,6 +113,7 @@ function setButtons(){
     for (let btn of Array.from(oppButtons)){
         btn.addEventListener("click",()=>{
             parseString();
+            console.log(sign, opp1, opp2)
             if(operationAllowed()){
                 operate(sign,opp1,opp2);
             }else{
@@ -131,6 +133,7 @@ function setButtons(){
     const equBtn = document.querySelector(".equal")
     equBtn.addEventListener("click",()=>{
         parseString();
+        console.log(sign,opp1,opp2)
         if (operationAllowed()){
             operate(sign,opp1,opp2)
         }else{
@@ -155,6 +158,45 @@ function setButtons(){
         }
         updateDisplay();
     })
+}
+
+function inputKey(key){
+    switch(key){
+        case ".":
+            document.querySelector("#dot").click();
+            break;
+        case "Enter":
+            document.querySelector(".equal").click();
+            break;
+        case "Backspace":
+            document.querySelector("#back").click();
+            break;
+        case "/":
+            document.querySelector("#div").click();
+            break;
+        case "*":
+            document.querySelector("#mul").click();
+            break;
+        case "-":
+            document.querySelector("#sub").click();
+            break;
+        case "+":
+            document.querySelector("#sum").click();
+            break;
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+            document.querySelector(`#id${key}`).click();
+            break;
+    }
+    return false;
 }
 
 setButtons();

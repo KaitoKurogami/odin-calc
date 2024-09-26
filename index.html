@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <input class="calcScreen" placeholder="1+1" readonly>
+    <input class="calcScreen" placeholder="1+1" onkeydown="return inputKey(event.key)">
     <div class="calcBody">
         <div class="numPad">
             <div class="numRow">
